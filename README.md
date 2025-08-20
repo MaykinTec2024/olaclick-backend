@@ -29,7 +29,8 @@ Esta es mi solución al **OlaClick Backend Challenge**, que consiste en diseñar
     { "description": "Ceviche", "quantity": 2, "unitPrice": 50 },
     { "description": "Chicha morada", "quantity": 1, "unitPrice": 10 }
   ]
-}```
+}
+```
 
 ✅ **Ver detalle de una orden**  
 - `GET /orders/:id`  
@@ -43,7 +44,7 @@ Esta es mi solución al **OlaClick Backend Challenge**, que consiste en diseñar
 # ⚙️ Instalación y Ejecución
 
 **1. Clonar repositorio** 
-- git clone https://github.com/tu-usuario/olaclick-backend.git
+- git clone https://github.com/MaykinTec2024/olaclick-backend.git
 - cd olaclick-backend
 
 **2. Configurar variables de entorno** 
@@ -57,9 +58,10 @@ Esta es mi solución al **OlaClick Backend Challenge**, que consiste en diseñar
 
 ```bash
 docker exec -it olaclick_api sh
-npm run test:e2e```
+npm run test:e2e
+```
 
-## ✅ Probar Endpoints en postman
+# ✅ Probar Endpoints en postman
 
 **1. Crear una nueva orden** 
 
