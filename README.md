@@ -87,3 +87,14 @@ npm run test:e2e
 **1. Avanzar estado de una orden** 
 
 - POST http://localhost:3000/orders/:id/advance
+
+# ❓ Respuestas a preguntas adicionales
+
+- ¿Cómo desacoplarías la lógica de negocio del framework NestJS?
+  La lógica de negocio debería estar en servicios y casos de uso que no dependan de NestJS ni de librerías externas. Los controladores solo actúan como una capa de entrada/salida (HTTP, CLI, gRPC, etc.), mientras que el dominio se mantiene independiente. Esto permite cambiar de framework sin reescribir la lógica principal y facilita pruebas unitarias más simples.
+
+- ¿Cómo escalarías esta API para soportar miles de órdenes concurrentes?
+  Se puede escalar horizontalmente con múltiples instancias en contenedores Docker orquestados con Kubernetes o similares, detrás de un balanceador de carga. La aplicación debe ser stateless (sin depender de estado local). Para mejorar el rendimiento, se optimizan consultas SQL con índices, se cachean resultados en Redis, y para operaciones pesadas se utilizan colas de mensajes como RabbitMQ o Kafka, garantizando que la API pueda responder rápido incluso bajo alta demanda.
+  
+- ¿Qué ventajas ofrece Redis en este caso y qué alternativas considerarías?
+  Redis es ideal porque guarda datos en memoria, lo que permite respuestas muy rápidas y reduce carga en la base de datos. Además, soporta estructuras como listas, sets y pub/sub que pueden extender la solución más adelante. Como alternativas consideraríamos Memcached (para un cache simple y ligero) o sistemas de cache distribuido como Hazelcast o Apache Ignite si se requiere alta disponibilidad y replicación en entornos distribuidos.
